@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Starting View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BMI_Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="StartingViewController" customModule="BMI_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,7 +48,7 @@
                                             <constraint firstAttribute="height" constant="25" id="gWC-AW-SP5"/>
                                         </constraints>
                                     </stackView>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4W1-a5-TE0">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="0.0" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="4W1-a5-TE0">
                                         <rect key="frame" x="-2" y="593" width="378" height="61"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="MVU-Od-Jge"/>
@@ -56,6 +56,9 @@
                                         <color key="minimumTrackTintColor" red="0.63591021299999995" green="0.63323229550000004" blue="0.87098109720000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="thumbTintColor" red="0.63591021299999995" green="0.63323229550000004" blue="0.87098109720000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="heightSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="B9a-y0-uCV"/>
+                                        </connections>
                                     </slider>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="EWx-P2-L8U">
                                         <rect key="frame" x="0.0" y="663" width="374" height="25"/>
@@ -77,7 +80,7 @@
                                             <constraint firstAttribute="height" constant="25" id="Hwo-Xb-sw7"/>
                                         </constraints>
                                     </stackView>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="R6f-28-CGN">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="R6f-28-CGN">
                                         <rect key="frame" x="-2" y="698" width="378" height="61"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="tvp-c0-ohA"/>
@@ -85,6 +88,9 @@
                                         <color key="minimumTrackTintColor" red="0.63591021299999995" green="0.63323229550000004" blue="0.87098109720000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="thumbTintColor" red="0.63591021299999995" green="0.63323229550000004" blue="0.87098109720000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="weightSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="j8O-8n-Twh"/>
+                                        </connections>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lu2-YG-KPm">
                                         <rect key="frame" x="0.0" y="768" width="374" height="50"/>
@@ -99,6 +105,9 @@
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="calculatePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DP0-ny-Mk6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -116,24 +125,32 @@
                             <constraint firstAttribute="trailingMargin" secondItem="1tg-Pl-WJe" secondAttribute="trailing" id="t4x-he-FTZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="HeightLabel" destination="kNX-Kj-zde" id="054-QH-rjz"/>
+                        <outlet property="heightLabel" destination="kNX-Kj-zde" id="aYU-Lr-KcT"/>
+                        <outlet property="heightSlider" destination="4W1-a5-TE0" id="eoh-vs-h7I"/>
+                        <outlet property="weightLabel" destination="BiV-TV-zRE" id="LbP-75-mnt"/>
+                        <outlet property="weightSlider" destination="R6f-28-CGN" id="140-LN-pNv"/>
+                        <segue destination="JOf-ni-gT0" kind="presentation" identifier="goToResult" id="A4w-tk-5IN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="86.383928571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="ph2-T9-q3u">
             <objects>
-                <viewController id="JOf-ni-gT0" sceneMemberID="viewController">
+                <viewController id="JOf-ni-gT0" customClass="ResultViewController" customModule="BMI_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Bg-PS-1Q8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="result_background" translatesAutoresizingMaskIntoConstraints="NO" id="Gg7-eq-BB2">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="E2m-cG-635">
-                                <rect key="frame" x="37" y="305" width="340" height="286.5"/>
+                                <rect key="frame" x="37" y="278" width="340" height="286.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR RESULT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufA-Pn-T6B">
                                         <rect key="frame" x="54" y="0.0" width="232" height="95.5"/>
@@ -156,7 +173,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ta1-JJ-FXH">
-                                <rect key="frame" x="20" y="802" width="374" height="60"/>
+                                <rect key="frame" x="20" y="748" width="374" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="53p-Jo-ZAA"/>
@@ -166,6 +183,9 @@
                                 <state key="normal" title="RECALCULATE">
                                     <color key="titleColor" systemColor="systemPurpleColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="recalculatePressed:" destination="JOf-ni-gT0" eventType="touchUpInside" id="Ojr-Bq-IXb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ahb-H1-B6n"/>
@@ -182,6 +202,10 @@
                             <constraint firstItem="Gg7-eq-BB2" firstAttribute="top" secondItem="9Bg-PS-1Q8" secondAttribute="top" id="xme-QA-b2z"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="adviceLabel" destination="f4g-eL-tpD" id="OUj-Bq-vGY"/>
+                        <outlet property="bmiLabel" destination="f8i-cw-n4h" id="WeA-8u-lJu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0L-7x-NCt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
